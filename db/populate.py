@@ -3,7 +3,8 @@ import psycopg2
 NAMES = False
 TITLES = False
 PRINCIPALS = False
-TITLES_BASE = True
+TITLES_BASE = False
+TITLES_RATINGS = True
 
 if NAMES:
     conn = psycopg2.connect("dbname=moviegame user=postgres")
@@ -63,6 +64,25 @@ if TITLES_BASE:
             print(line.split())
             fields = line.split("\t")
             cur.execute("INSERT INTO titles_base (tconst, titleType, primaryTitle, originalTitle, isAdult, startYear, endYear, runtimeMinutes, genres) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", tuple(fields) )
+        line_counter += 1
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+if TITLES_RATINGS:
+    conn = psycopg2.connect("dbname=moviegame user=postgres")
+    cur = conn.cursor()
+    #  tconst	averageRating	numVotes
+    line_counter = 0
+    for line in open("data/title.ratings.tsv"):
+        if line_counter > 0:
+            print(line.split())
+            fields = line.split("\t")
+            cur.execute(
+                "INSERT INTO titles_ratings (tconst, averageRating, numVotes) VALUES (%s, %s, %s)", 
+                (fields[0], float(fields[1]), int(fields[2]) ) 
+            )
         line_counter += 1
 
     conn.commit()

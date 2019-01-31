@@ -54,6 +54,15 @@ CREATE TABLE titles_base(
 
 CREATE INDEX idx_titles_base_title_id ON titles_base (tconst);
 
+
+CREATE TABLE titles_ratings(
+    tconst VARCHAR,
+    averageRating FLOAT,
+    numVotes INT
+);
+
+CREATE INDEX idx_titles_ratings_title_id ON titles_ratings (tconst);
+
 -- Full text searches:
 
 CREATE INDEX idx_full_text_titles ON titles_base USING GIN (to_tsvector('english', primaryTitle));
