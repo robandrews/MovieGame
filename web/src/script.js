@@ -34,13 +34,13 @@ $(document).ready(function() {
 
     $('#titles_search').bind('typeahead:select', function(ev, suggestion) {
       threadComponent.addTitle(suggestion);
-      $(this).val("");
-    });
-
-    $('#titles_search').typeahead().bind('typeahead:closed', function () {
-      $(this).val("");
+      $('#titles_search').typeahead('val', "");
     });
     
+    $('#titles_search').focusin(function(){
+      $('#titles_search').typeahead('val', "");
+    })
+
   });
 
   
