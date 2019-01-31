@@ -6,32 +6,42 @@
   <meta name="author" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" data-semver="2.1.1" data-require="jquery@*"></script>
-  <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-semver="3.1.1" data-require="bootstrap@3.1.1"></script>
-  <script type="text/javascript" src="typeahead.bundle.js"></script>  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
-  
-  <script type="text/javascript" src="script.js"></script>
-  
+
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js-bootstrap-css/1.2.1/typeaheadjs.min.css" rel="stylesheet">
+  <link href="src/style.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="container">
-    <h1>The Movie Game</h1>
+    <div id="title-container"></div>
     
     <div class="tab-pane active" id="tab1">
       <div class="well">
-        <form role="form">
-          <div class="form-group">
-            <input class="form-control" id="titles_search" type="text" placeholder="Enter a movie">
-          </div>
-        </form>
+        <div id="search-container"></div>
+        <div id="thread-container"></div>
       </div>
     </div>
-
   </div>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" data-semver="2.1.1" data-require="jquery@*"></script>
+  <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-semver="3.1.1" data-require="bootstrap@3.1.1"></script>
+  <script type="text/javascript" src="lib/typeahead.bundle.js"></script>  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+  
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> -->
+
+  <script type="text/javascript" src="dist/script.js"></script>
+  <script src="dist/components/title.js"></script>
+  <script src="dist/components/search.js"></script>
+  <script src="dist/components/thread.js"></script>
+  <script>
+
+  </script>
 </body>
 
 </html>
