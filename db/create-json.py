@@ -2,7 +2,7 @@ import psycopg2
 import json
 
 q = """
-select t.title
+select tr.tconst, t.title, tb.startYear
 from titles_ratings tr 
 inner join titles_base tb 
 on tr.tconst=tb.tconst
@@ -24,8 +24,7 @@ cur.execute(q)
 
 o = []
 for row in cur.fetchall():
-    # o.append(row)
-    o.extend(row)
+    o.append(row_to_dict(row))
 
 with open("data/movie_cache.json", "w") as wf:
     json.dump(o, wf)
