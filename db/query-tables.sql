@@ -50,10 +50,9 @@ where n.nconst = 'nm0000151'
 and category in ('actor', 'actress');
 
 
-
 select * 
 from titles_ratings tr 
 inner join titles_base tb 
 on tr.tconst=tb.tconst 
 order by numVotes desc 
-limit 50000;
+limit 500;

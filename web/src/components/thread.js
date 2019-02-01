@@ -3,19 +3,16 @@
 const e = React.createElement;
 
 
-
-
 class MovieThread extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {titles: [{ "year": "1972", "name": "The Godfather", "id": "tt0068646" }]};
+    this.state = {titles: []};
   }
 
-  addTitle(title){
+  addTitle(title, movie){
     var curr = this.state.titles;
+    title["movie"] = movie;
     curr = curr.concat(title)
-    console.log("titles: ")
-    console.log(curr)
     this.setState({
         titles: curr
     });
@@ -23,7 +20,7 @@ class MovieThread extends React.Component {
 
   render() {
     const listItems = this.state.titles.map((title) =>
-        <li key={title.id}>{title.name}, ({title.year})</li>
+        <li key={title.id}>{title.movie == true ? "Movie" : "Actor"} -- {title.name}{title.year ? `, ${title.year}` : ""}</li>
     );
     return(
       <ul>{listItems}</ul>

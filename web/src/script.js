@@ -33,14 +33,32 @@ $(document).ready(function() {
     console.log(threadComponent);
 
     $('#titles_search').bind('typeahead:select', function(ev, suggestion) {
-      threadComponent.addTitle(suggestion);
+      threadComponent.addTitle(suggestion, true);
       $('#titles_search').typeahead('val', "");
+      setTimeout(function(){
+        console.log("getting answer:")
+        console.log()
+        url = "http://localhost:5000/actors-from-movie/"+suggestion["id"]
+        // $.get(url, function(data){
+        //   console.log(data)
+        // })
+        $.ajax({
+          type: 'GET',
+          url: url,
+          success: function(jsondata){
+            console.log(jsondata)
+            o = JSON.parse(jsondata)
+            d = {"name": o[0][7], "id": o[0][6]}
+            threadComponent.addTitle(d, false);
+          }
+        })
+        
+      }, 100)
     });
     
     $('#titles_search').focusin(function(){
       $('#titles_search').typeahead('val', "");
     })
-
   });
 
   
