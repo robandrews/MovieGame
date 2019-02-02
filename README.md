@@ -6,9 +6,8 @@
 * 👍 server
     * 👍 get_actor_for_movie
     * 👍 get_move_for_actor
-* checking
-* allow player to use actors
+* 👍 checking
+* 👍 finish 1 player, 1 side game
+* finish 1 player, both sides game
 * styles
-* finish 1 player game
-
-* uses free data from imdb, write disclaimer that the cast lists are not complete.
+* finish 2 player game
